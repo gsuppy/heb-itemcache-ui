@@ -1,8 +1,8 @@
 import React from 'react';
 import Cache from './components/cache';
-import Nav from './components/nav';
+import Nav from './components/Nav';
 import Search from './components/search';
-import Queries from './components/queries';
+import Queries from './components/Queries';
 
 import './App.css';
 
@@ -12,6 +12,8 @@ function App() {
       <Nav></Nav>
       <div className="container">
         <Search></Search>
+      </div>
+      <div className="BottomApp">
         <Cache></Cache>
         <Queries></Queries>
       </div>
