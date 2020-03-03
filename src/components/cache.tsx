@@ -1,10 +1,17 @@
 import React from 'react';
-// import './App.css';
+import '../styles/Cache.css';
 
 function Cache() {
     return (
-        <div>
-            Cache
+        <div className="Cache">
+            <div>
+                <h1>Cache List</h1>
+            </div>
+            <div>
+                <ul>
+                    <li>Sample query</li>
+                </ul>
+            </div>
         </div>
     );
 }

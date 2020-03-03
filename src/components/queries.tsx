@@ -1,10 +1,17 @@
 import React from 'react';
-// import './App.css';
+import '../styles/Queries.css';
 
 function Queries() {
     return (
-        <div>
-            Queries
+        <div className="Queries">
+            <div>
+                <h1>Queries List</h1>
+            </div>
+            <div>
+                <ul>
+                    <li>Sample query</li>
+                </ul>
+            </div>
         </div>
     );
 }
