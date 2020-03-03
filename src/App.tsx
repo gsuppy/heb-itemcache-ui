@@ -1,7 +1,7 @@
 import React from 'react';
-import Cache from './components/cache';
+import Cache from './components/Cache';
 import Nav from './components/Nav';
-import Search from './components/search';
+import Search from './components/Search';
 import Queries from './components/Queries';
 
 import './App.css';

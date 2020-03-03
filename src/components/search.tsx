@@ -2,7 +2,7 @@ import React from 'react';
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
-import './search.css';
+import '../styles/Search.css';
 
 export interface SearchProps { }
 export interface SearchState { query: string; }
