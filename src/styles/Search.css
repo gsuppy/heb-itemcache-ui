@@ -1,9 +1,25 @@
 .cart {
-    color: #ffffff;
-    background-color: #DC2A27;
-    border-color: #DC2A27;
+    color: #ffffff ;
+    background-color: #DC2A27 !important;
+    border-color: #DC2A27 !important;
+}
+
+.cart:hover{
+    background-color: #c82333 !important;
 }
 
 .heb-button {
     color: #ffffff;
+}
+
+.mr {
+    margin-right: 10px;
+}
+
+.spacer {
+    margin-top: 50px;
+}
+
+.mr-btn {
+    margin-right: 15px;
 }
