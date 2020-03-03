@@ -1,5 +1,14 @@
 .Cache {
-    background-color: blue;
-    width: 33%;
-    height: 100%;
+   width: 33%;
+   height: 100%;
+}
+
+.Cache-list {
+   display: flex;
+   text-align: left;
+   justify-content: center;
+}
+
+.Cache-text {
+   margin-left: 15px;   
 }

@@ -1,5 +1,14 @@
 .Queries {
-    background-color: purple;
     width: 67%;
     height: 100%;
+}
+
+.Queries-list {
+    display: flex;
+    text-align: left;
+    justify-content: center;
+}
+
+.Queries-text {
+    margin-left: 15px;
 }
