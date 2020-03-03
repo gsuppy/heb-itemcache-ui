@@ -12,11 +12,8 @@ function App() {
     <div className="App">
       <Nav></Nav>
       <div className="container">
-        <Search></Search>
-      </div>
-      <div className="BottomApp">
-        <Cache></Cache>
-        <Queries></Queries>
+        <Search>
+        </Search>
       </div>
     </div>
   );
