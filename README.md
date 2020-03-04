@@ -9,7 +9,7 @@
 
 `docker run -v ${PWD}:/app -v /app/node_modules -p 3001:3000 --rm sample:dev`
 
-Open up [http://localhost:3001/] (http://localhost:3001/) to see the container in your browser.
+Open up [http://localhost:3001/](http://localhost:3001/) to see the container in your browser.
 
 
 ## Local Development Instructions
