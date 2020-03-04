@@ -35,7 +35,7 @@ export class Search extends React.Component<{}, SearchState> {
     }
 
     handleSubmit() {
-        const apiBaseUrl = 'http://api';
+        const apiBaseUrl = 'http://istio-ingress-gateway.istio-system.svc.local';
         console.log("searching for " + this.state.query);
         // must be a unique query
         if (!this.state.queries.includes(this.state.query)) {
@@ -80,8 +80,12 @@ export class Search extends React.Component<{}, SearchState> {
               </div>
               <div className="container-fluid">
                   <div className="spacer row">
-                      <Cache cached={this.state.queries} timestamp={this.state.timestamp}></Cache>
-                      <Queries></Queries>
+                      <div className="col-md-4">
+                        <Cache cached={this.state.queries} timestamp={this.state.timestamp}></Cache>
+                      </div>
+                      <div className="col-md-8">
+                        <Queries></Queries>
+                      </div>
                   </div>
               </div>
           </div>
