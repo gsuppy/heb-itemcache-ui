@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <Nav></Nav>
-      <div className="container">
+      <div className="container-fluid">
         <Search>
         </Search>
       </div>
