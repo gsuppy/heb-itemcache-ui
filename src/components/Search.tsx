@@ -80,7 +80,7 @@ export class Search extends React.Component<{}, SearchState> {
               </div>
               <div className="container-fluid">
                   <div className="spacer row">
-                      <Cache cached={this.state.queries}></Cache>
+                      <Cache cached={this.state.queries} timestamp={this.state.timestamp}></Cache>
                       <Queries></Queries>
                   </div>
               </div>
