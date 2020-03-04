@@ -2,18 +2,14 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: frontend-vs
-  namespace: fsi
 spec:
   hosts:
   - "*"
   gateways:
-  - istio-ingress-gateway
+  - http-gateway
   http:
-  - match:
-    - uri:
-        exact: /itemcache
-    route:
+  - route:
     - destination:
-        host: frontend-svc
+        host: item-cache-frontend-svc
         port:
           number: 80
