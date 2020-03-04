@@ -33,15 +33,15 @@ export class Search extends React.Component<{}, SearchState> {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-        query: "", 
-        queries: [""], 
-        queryInfo: "",
-        timestamp: [""]
+      query: "", 
+      queries: [""], 
+      queryInfo: "",
+      timestamp: [""]
     };
   }
 
   handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-      this.setState({query: e.target.value});
+    this.setState({query: e.target.value});
   }
 
   handleSubmit() {
@@ -103,7 +103,7 @@ export class Search extends React.Component<{}, SearchState> {
         <div className="container-fluid">
           <div className="spacer row">
             <div className="col-md-4">
-              <Cache cached={this.state.queries} timestamp={this.state.timestamp}></Cache>
+              <Cache cached={this.state.queries} timestamp={this.state.timestamp} response={this.state.queryInfo}></Cache>
             </div>
             <div className="col-md-8">
               <Queries></Queries>
