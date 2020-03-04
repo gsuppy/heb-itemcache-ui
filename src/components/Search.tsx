@@ -18,7 +18,20 @@ interface SearchState {
   prodId: string;
   displayName: string;
   longDescription: string;
+  pic: string;
 } 
+const imgBaseUrlprefix = "https://images.heb.com/is/image/HEBGrocery/000";
+const imgBaseUrlsuffix = "-1?id=iDPQH0&fmt=jpg&fit=constrain,1&wid=296&hei=296";
+
+let itemMap: Record<string, string> = 
+{
+  "avocados": "377478",
+  "apples": "466634",
+  "oranges": "375168",
+  "peaches": "320978",
+  "watermelon": "583329",
+  "kiwi": "375269"
+};
 
 function getCurrentDate(separator="-"){
 
@@ -38,6 +51,14 @@ export class Search extends React.Component<{}, SearchState> {
     super(props);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setEmptyState();
+  }
+
+  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    this.setState({query: e.target.value});
+  }
+
+  setEmptyState(){
     this.state = {
       query: "", 
       queries: [""], 
@@ -47,18 +68,14 @@ export class Search extends React.Component<{}, SearchState> {
       brand: "",
       prodId: "",
       displayName: "",
-      longDescription: ""
+      longDescription: "",
+      pic: imgBaseUrlprefix + imgBaseUrlsuffix
     };
-  }
-
-  handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    this.setState({query: e.target.value});
   }
 
   handleSubmit() {
     const apiBaseUrl = "https://item-cache.w2-2.dev.kon.heb.com/apihub/v1/products/";
-    const itemId = "377478";
-    // const itemId = this.state.query;
+    const itemId = this.queryToID(this.state.query);
 
     fetch(apiBaseUrl + itemId)
     .then(response => response.json())
@@ -72,21 +89,32 @@ export class Search extends React.Component<{}, SearchState> {
         prodId: body.prodId,
         displayName: body.displayName,
         longDescription: body.longDescription,
+        pic: imgBaseUrlprefix + body.prodId + imgBaseUrlsuffix
       });
-    })
-    .catch(error => console.log("Error with Fetch!"))
-    
-    console.log("searching for " + this.state.query);
-    console.log(this.state.queryInfo);
 
-    // must be a unique query
-    if (!this.state.queries.includes(this.state.query)) {
+      // must be a unique query
+      if (!this.state.queries.includes(this.state.query)) {
         this.state.queries.push(this.state.query);
         this.state.timestamp.push(getCurrentDate());
         this.setState({query: ""});           
-    };
+      };
+    })
+    .catch(error => {
+      console.log("Error with Fetch!");
+      this.setEmptyState();
+    })
+    
+    console.log("searching for " + this.state.query);
+    console.log(this.state.queryInfo);
   }
   
+  queryToID(id: string){
+    if(Object.keys(itemMap).includes(id)){
+      return itemMap[id];
+    }
+    return -1; 
+  }
+
   render() {
     const query = this.state.query;
     return (
@@ -122,18 +150,19 @@ export class Search extends React.Component<{}, SearchState> {
         </div>
         <div className="container-fluid">
           <div className="spacer row">
-            <div className="col-md-4">
+            <div className="col-md-5">
               <Cache 
               cached={this.state.queries} 
               timestamp={this.state.timestamp}>
               </Cache>
             </div>
-            <div className="col-md-8">
+            <div className="col-md-7">
               <Queries
               type={this.state.type}
               brand={this.state.brand}
               prodId={this.state.prodId}
               displayName={this.state.displayName}
+              pic={this.state.pic}
               longDescription={this.state.longDescription}>
               </Queries>
             </div>

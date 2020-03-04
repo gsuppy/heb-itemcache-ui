@@ -1,7 +1,5 @@
-.Queries-list {
-    display: flex;
+.Queries {
     text-align: left;
-    justify-content: center;
 }
 
 .Queries-text {
