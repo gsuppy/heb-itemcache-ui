@@ -4,13 +4,14 @@
     height: 120px;
     justify-content: center;
     align-items: center;
+    color: #ffffff;
 }
 
-.logo {
+.Nav li{
+    color: #ffffff;
 }
 
 .logo img {
-
     width: 230px;
     height: 80px;
 }
