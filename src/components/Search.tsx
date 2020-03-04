@@ -51,7 +51,7 @@ export class Search extends React.Component<{}, SearchState> {
             <div className="spacer">
               <div className="container">
                   <div className="row">
-                      <div className="col-md-7">
+                      <div className="col-md-6">
                           <InputGroup>
                               <FormControl placeholder="Search" aria-label="Recipient's username" aria-describedby="basic-addon2" value={query} onChange={this.handleChange} onKeyPress={(event: { key: string; })=> { if (event.key === "Enter") { if(query != '') this.handleSubmit(); } }} />
                                   <InputGroup.Append>
@@ -59,14 +59,14 @@ export class Search extends React.Component<{}, SearchState> {
                                   </InputGroup.Append>
                           </InputGroup>
                       </div>
-                      <div className="col-md-5">
-                          <Button className="mr-btn" variant="outline-secondary">
+                      <div className="col-md-6">
+                          <Button className="mr-btn" variant="light">
                               <span className="btn-txt">
                                           <i className="fa-icon fa fa-car mr"></i>
                                           Shop Curbside
                                       </span>
                           </Button>
-                          <Button className="mr-btn" variant="outline-secondary">
+                          <Button className="mr-btn" variant="light">
                               <span className="btn-txt">
                                           <i className="fa-icon fa fa-home mr"></i>
                                           Shop Delivery
