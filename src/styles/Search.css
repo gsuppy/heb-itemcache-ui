@@ -23,3 +23,8 @@
 .mr-btn {
     margin-right: 15px;
 }
+
+.btn-txt{
+    font-weight: 500;
+    color: #333;
+}

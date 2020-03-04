@@ -52,18 +52,22 @@ export class Search extends React.Component<{}, SearchState> {
                                 }}
                                 />
                                 <InputGroup.Append>
-                                <Button variant="outline-secondary" onClick={this.handleSubmit}>Go</Button>
+                                <Button variant="dark" onClick={this.handleSubmit}><i className="fa fa-search"></i></Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </div>
                         <div className="col-md-5">
                             <Button className="mr-btn" variant="outline-secondary">
-                            <i className="fa fa-car mr"></i>
-                            Shop Curbside
+                            <span className="btn-txt">
+                                <i className="fa-icon fa fa-car mr"></i>
+                                Shop Curbside
+                            </span>
                             </Button>
                             <Button className="mr-btn" variant="outline-secondary">
-                            <i className="fa fa-home mr"></i>
-                            Shop Delivery
+                            <span className="btn-txt">
+                                <i className="fa-icon fa fa-home mr"></i>
+                                Shop Delivery
+                            </span>
                             </Button>
                             <button type="button" className="btn btn-danger cart">
                                 <i className="fa fa-shopping-cart mr"></i>
