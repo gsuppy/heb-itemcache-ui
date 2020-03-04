@@ -5,6 +5,7 @@ import FormControl from "react-bootstrap/FormControl"
 import "../styles/Search.css";
 import Queries from "./Queries";
 import Cache from "./Cache";
+import { stringify } from "querystring";
 
 interface SearchProps { }
 interface SearchState { 
@@ -12,6 +13,11 @@ interface SearchState {
   queries: Array<string>; 
   queryInfo: string;
   timestamp: Array<string>;
+  type: string;
+  brand: string;
+  prodId: string;
+  displayName: string;
+  longDescription: string;
 } 
 
 function getCurrentDate(separator="-"){
@@ -36,7 +42,12 @@ export class Search extends React.Component<{}, SearchState> {
       query: "", 
       queries: [""], 
       queryInfo: "",
-      timestamp: [""]
+      timestamp: [""],
+      type: "",
+      brand: "",
+      prodId: "",
+      displayName: "",
+      longDescription: ""
     };
   }
 
@@ -51,9 +62,18 @@ export class Search extends React.Component<{}, SearchState> {
 
     fetch(apiBaseUrl + itemId)
     .then(response => response.json())
-    .then(response => this.setState({ 
-      queryInfo: response.results,
-    }))
+    .then(response => () => {
+      const body = response.results;
+
+      this.setState({ 
+        queryInfo: body,
+        type: body.type,
+        brand: body.brand,
+        prodId: body.prodId,
+        displayName: body.displayName,
+        longDescription: body.longDescription,
+      });
+    })
     .catch(error => console.log("Error with Fetch!"))
     
     console.log("searching for " + this.state.query);
@@ -103,10 +123,19 @@ export class Search extends React.Component<{}, SearchState> {
         <div className="container-fluid">
           <div className="spacer row">
             <div className="col-md-4">
-              <Cache cached={this.state.queries} timestamp={this.state.timestamp} response={this.state.queryInfo}></Cache>
+              <Cache 
+              cached={this.state.queries} 
+              timestamp={this.state.timestamp}>
+              </Cache>
             </div>
             <div className="col-md-8">
-              <Queries></Queries>
+              <Queries
+              type={this.state.type}
+              brand={this.state.brand}
+              prodId={this.state.prodId}
+              displayName={this.state.displayName}
+              longDescription={this.state.longDescription}>
+              </Queries>
             </div>
           </div>
         </div>
