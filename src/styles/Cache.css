@@ -9,6 +9,10 @@
    justify-content: center;
 }
 
+.Cache-time {
+   margin-left: 10px;
+}
+
 .Cache-text {
    margin-left: 15px;   
 }

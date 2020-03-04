@@ -7,14 +7,27 @@ import Queries from './Queries';
 import Cache from './Cache';
 
 export interface SearchProps { }
-export interface SearchState { query: string; queries: Array<string>; } 
+export interface SearchState { query: string; queries: Array<string>; timestamp: Array<string>; } 
+
+export function getCurrentDate(separator='-'){
+
+    let newDate = new Date()
+    let date = newDate.getDate();
+    let month = newDate.getMonth() + 1;
+    let year = newDate.getFullYear();
+    let hour = newDate.getHours();
+    let minute = newDate.getMinutes();
+    let seconds = newDate.getSeconds();
+    
+    return `${month<10?`${month}`:`${month}`}${separator}${date}${separator}${year} at ${hour}:${minute}:${seconds}`
+}
 
 export class Search extends React.Component<{}, SearchState> {
     constructor(props: SearchProps) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.state = {query: '', queries: []};
+        this.state = {query: '', queries: [''], timestamp: ['']};
     }
 
     handleChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -25,10 +38,11 @@ export class Search extends React.Component<{}, SearchState> {
         const apiBaseUrl = 'http://api';
         console.log("searching for " + this.state.query);
         // must be a unique query
-        if(!this.state.queries.includes(this.state.query)){
+        if (!this.state.queries.includes(this.state.query)) {
             this.state.queries.push(this.state.query);
-            this.setState({query: ''});
-        }
+            this.state.timestamp.push(getCurrentDate());
+            this.setState({query: ''});           
+        };
     }
     
     render() {
@@ -46,7 +60,7 @@ export class Search extends React.Component<{}, SearchState> {
                             onChange={this.handleChange}
                             onKeyPress={(event: { key: string; }) => {
                                 if (event.key === "Enter") {
-                                    if(query != '') this.handleSubmit();
+                                    if(query !== '') this.handleSubmit();
                                 }
                               }}
                             />
@@ -71,7 +85,7 @@ export class Search extends React.Component<{}, SearchState> {
                     </div>
                 </div>
                 <div className="row">
-                    <Cache cached={this.state.queries}></Cache>
+                    <Cache cached={this.state.queries} timestamp={this.state.timestamp}></Cache>
                     <Queries></Queries>
                 </div>
             </div>
