@@ -12,8 +12,8 @@ function App() {
       <Nav></Nav>
       <div className="container-fluid">
         <div className="v2-banner col-md-12">
-          <Alert className="center-banner" variant="success">
-            Banner!
+          <Alert className="center-banner" variant="info">
+            Version 2.0
           </Alert>
         </div>
         <Search>
