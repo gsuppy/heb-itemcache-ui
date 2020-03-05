@@ -13,7 +13,7 @@ function App() {
       <div className="container-fluid">
         <div className="v2-banner col-md-12">
           <Alert className="center-banner" variant="success">
-            Banner!
+            Version 1.0
           </Alert>
         </div>
         <Search>
