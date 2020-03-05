@@ -41,3 +41,7 @@
 .BottomApp {
   display: flex;
 }
+
+.v2 .v2-banner{
+  display: none;
+}
