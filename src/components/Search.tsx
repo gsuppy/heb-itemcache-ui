@@ -83,8 +83,9 @@ export class Search extends React.Component<{}, SearchState> {
       }
     })
     .then(response => response.json())
-    .then(response => () => {
+    .then(response => {
       const body = response;
+      console.log(body);
 
       this.setState({ 
         queryInfo: body,
@@ -109,7 +110,6 @@ export class Search extends React.Component<{}, SearchState> {
     })
     
     console.log("searching for " + this.state.query);
-    console.log(this.state.queryInfo);
   }
   
   queryToID(id: string){
