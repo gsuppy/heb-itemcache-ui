@@ -77,7 +77,11 @@ export class Search extends React.Component<{}, SearchState> {
     const apiBaseUrl = "https://item-cache.w2-2.dev.kon.heb.com/apihub/v1/products/";
     const itemId = this.queryToID(this.state.query);
 
-    fetch(apiBaseUrl + itemId)
+    fetch(apiBaseUrl + itemId, {
+      headers: {
+        'apikey': "CORONA"
+      }
+    })
     .then(response => response.json())
     .then(response => () => {
       const body = response.results;
