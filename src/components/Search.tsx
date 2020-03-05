@@ -79,7 +79,7 @@ export class Search extends React.Component<{}, SearchState> {
 
     fetch(apiBaseUrl + itemId, {
       headers: {
-        'apikey': "CORONA"
+        'apikey': "TORTILLA"
       }
     })
     .then(response => response.json())
