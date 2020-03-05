@@ -84,7 +84,7 @@ export class Search extends React.Component<{}, SearchState> {
     })
     .then(response => response.json())
     .then(response => () => {
-      const body = response.results;
+      const body = response;
 
       this.setState({ 
         queryInfo: body,
