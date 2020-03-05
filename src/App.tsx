@@ -11,7 +11,7 @@ function App() {
     <div className="App">
       <Nav></Nav>
       <div className="container-fluid">
-        <div className="col-md-12">
+        <div className="v2-banner col-md-12">
           <Alert className="center-banner" variant="success">
             Banner!
           </Alert>

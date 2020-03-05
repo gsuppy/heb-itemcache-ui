@@ -83,7 +83,7 @@ export class Search extends React.Component<{}, SearchState> {
       }
     })
     .then(response => response.json())
-    .then(response => () => {
+    .then(response => {
       const body = response;
 
       this.setState({ 
